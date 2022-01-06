@@ -22,13 +22,21 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={handleSearch}>
+    <form
+      onSubmit={handleSearch}
+      className="pb-4 px-4 flex flex-col gap-4 items-start md:flex-row"
+    >
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search for a country"
+        className="p-2 w-full rounded-md shadow-md outline-none"
       />
-      <select value={region} onChange={(e) => setRegion(e.target.value)}>
+      <select
+        value={region}
+        onChange={(e) => setRegion(e.target.value)}
+        className="bg-white w-full shadow-md p-2 rounded-md md:max-w-xs"
+      >
         <option value="">Filter by region</option>
         <option value="Africa">Africa</option>
         <option value="Americas">America</option>
@@ -36,7 +44,12 @@ const Search = () => {
         <option value="Europe">Europe</option>
         <option value="Oceania">Oceania</option>
       </select>
-      <button type="submit">Search</button>
+      <button
+        className="bg-white p-2 rounded-md w-full shadow-md active:shadow-none md:max-w-xs"
+        type="submit"
+      >
+        Search
+      </button>
     </form>
   );
 };

@@ -8,7 +8,7 @@ const CountryList = () => {
   const result = filteredCountries.length > 0 ? filteredCountries : countries;
 
   return (
-    <main>
+    <main className="grid gap-20 grid-cols-auto-fit px-4 w-full mt-10">
       {result.map((c) => {
         return <CountryCard country={c} key={c.alpha2Code} />;
       })}

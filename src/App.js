@@ -5,7 +5,7 @@ import Nav from './components/Nav';
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />

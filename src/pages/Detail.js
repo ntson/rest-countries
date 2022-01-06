@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CountriesContext } from '../context/CountriesContext';
 import useCountry from '../hooks/useCountry';

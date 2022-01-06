@@ -32,24 +32,28 @@ const useCountry = (code, countries) => {
   }, [code, countries]);
 
   useEffect(() => {
-    if (countries.length > 0) {
-      const currentBorderCountries = countries.filter((c) => {
-        return country.borders.includes(c.alpha3Code);
-      });
-
-      setBorders(currentBorderCountries.map((c) => c.name));
-      setBordersLoading(false);
+    if (!country.borders) {
+      setBorders([]);
     } else {
-      Promise.all(
-        country.borders.map((b) => {
-          return fetch(`https://restcountries.com/v2/alpha/${b}`)
-            .then((res) => res.json())
-            .then((c) => c.name);
-        })
-      ).then((b) => {
-        setBorders(b);
+      if (countries.length > 0) {
+        const currentBorderCountries = countries.filter((c) => {
+          return country.borders.includes(c.alpha3Code);
+        });
+
+        setBorders(currentBorderCountries.map((c) => c.name));
         setBordersLoading(false);
-      });
+      } else {
+        Promise.all(
+          country.borders.map((b) => {
+            return fetch(`https://restcountries.com/v2/alpha/${b}`)
+              .then((res) => res.json())
+              .then((c) => c.name);
+          })
+        ).then((b) => {
+          setBorders(b);
+          setBordersLoading(false);
+        });
+      }
     }
   }, [country.borders, countries]);
 
