@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const CountryCard = ({ country }) => {
   return (
     <section>
@@ -15,6 +17,7 @@ const CountryCard = ({ country }) => {
         <span>Capital: </span>
         {country.capital}
       </p>
+      <Link to={`/${country.alpha2Code}`}>Learn more</Link>
     </section>
   );
 };

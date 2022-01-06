@@ -17,6 +17,8 @@ const Search = () => {
     });
 
     setFilteredCountries(filtered);
+    setSearch('');
+    setRegion('');
   };
 
   return (
