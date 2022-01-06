@@ -3,7 +3,7 @@ import Search from '../components/Search';
 
 const Home = () => {
   return (
-    <div>
+    <div className="py-10">
       <Search />
       <CountryList />
     </div>

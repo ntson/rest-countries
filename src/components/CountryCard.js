@@ -3,7 +3,7 @@ import Annotation from './Annotation';
 
 const CountryCard = ({ country }) => {
   return (
-    <section className="bg-white shadow-md rounded-lg overflow-hidden max-w-[350px]">
+    <section className="bg-white shadow-md rounded-lg overflow-hidden max-w-[400px]">
       <img
         src={country.flags.png}
         alt={`${country.name} flag`}
@@ -25,7 +25,10 @@ const CountryCard = ({ country }) => {
             {country.capital}
           </p>
         </div>
-        <Link className="text-blue-600 underline" to={`/${country.alpha2Code}`}>
+        <Link
+          className="text-blue-600 underline outline-none"
+          to={`/${country.alpha2Code}`}
+        >
           Learn more
         </Link>
       </div>

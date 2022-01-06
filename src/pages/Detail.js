@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CountriesContext } from '../context/CountriesContext';
+import Annotation from '../components/Annotation';
 import useCountry from '../hooks/useCountry';
 
 const Detail = () => {
@@ -19,65 +20,68 @@ const Detail = () => {
   const languages = country.languages.map((l) => l.name).join(', ');
 
   return (
-    <div>
+    <div className="bg-gray-100 h-screen p-10 flex flex-col gap-20 items-start">
       <button
         onClick={() => {
           setFilteredCountries([]);
           navigate(-1);
         }}
+        className="bg-white rounded-md py-2 px-4 shadow-md w-1/3 outline-none max-w-[150px]"
       >
         Back
       </button>
-      <div>
-        <img src={country.flags.png} alt={`${country.name} flag`} />
-        <div>
-          <h2>{country.name}</h2>
+      <div className="flex flex-col gap-10 w-full h-full md:flex-row md:gap-32 md:items-center">
+        <img
+          src={country.flags.png}
+          alt={`${country.name} flag`}
+          className="md:w-2/5 md:h-3/6"
+        />
+        <div className="flex flex-col gap-6">
+          <h2 className="font-extrabold text-2xl">{country.name}</h2>
 
-          <div>
+          <div className="flex flex-col gap-10 md:flex-row w-full">
             <div>
               <p>
-                <span>Native name: </span>
+                <Annotation>Native name: </Annotation>
                 {country.nativeName}
               </p>
               <p>
-                <span>Population: </span>
+                <Annotation>Population: </Annotation>
                 {country.population}
               </p>
               <p>
-                <span>Region: </span>
+                <Annotation>Region: </Annotation>
                 {country.region}
               </p>
               <p>
-                <span>Sub region: </span>
+                <Annotation>Sub region: </Annotation>
                 {country.subregion}
               </p>
               <p>
-                <span>Capital: </span>
+                <Annotation>Capital: </Annotation>
                 {country.capital}
               </p>
             </div>
 
             <div>
               <p>
-                <span>Top level domain: </span>
+                <Annotation>Top level domain: </Annotation>
                 {country.topLevelDomain.join(', ')}
               </p>
               <p>
-                <span>Currencies: </span>
+                <Annotation>Currencies: </Annotation>
                 {currencies}
               </p>
               <p>
-                <span>Languages: </span>
+                <Annotation>Languages: </Annotation>
                 {languages}
               </p>
             </div>
           </div>
 
           <div>
-            <span>Border countries: </span>{' '}
-            {borders.map((b) => {
-              return <div key={b}>{b}</div>;
-            })}
+            <Annotation>Border countries: </Annotation>{' '}
+            {borders.length > 0 ? borders.join(', ') : 'None'}
           </div>
         </div>
       </div>
