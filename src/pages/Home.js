@@ -1,5 +1,13 @@
+import CountryList from '../components/CountryList';
+import Search from '../components/Search';
+
 const Home = () => {
-  return <div>Homepage</div>;
+  return (
+    <div>
+      <Search />
+      <CountryList />
+    </div>
+  );
 };
 
 export default Home;
