@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { CountriesContext } from '../context/CountriesContext';
 import Annotation from '../components/Annotation';
 import useCountry from '../hooks/useCountry';
+import Spinner from '../components/Spinner';
 
 const Detail = () => {
   const { setFilteredCountries, countries } = useContext(CountriesContext);
@@ -14,7 +15,7 @@ const Detail = () => {
 
   const navigate = useNavigate();
 
-  if (countryLoading || bordersLoading) return <div>loading...</div>;
+  if (countryLoading || bordersLoading) return <Spinner />;
 
   const currencies = country.currencies.map((c) => c.name).join(', ');
   const languages = country.languages.map((l) => l.name).join(', ');

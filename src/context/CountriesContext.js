@@ -5,12 +5,14 @@ export const CountriesContext = createContext();
 const CountriesContextProvider = ({ children }) => {
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://restcountries.com/v2/all')
       .then((res) => res.json())
       .then((c) => {
         setCountries(c);
+        setLoading(false);
       })
       .catch(console.log);
   }, []);
@@ -22,6 +24,7 @@ const CountriesContextProvider = ({ children }) => {
         setCountries,
         filteredCountries,
         setFilteredCountries,
+        loading,
       }}
     >
       {children}

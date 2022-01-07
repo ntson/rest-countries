@@ -1,9 +1,15 @@
 import { useContext } from 'react';
 import { CountriesContext } from '../context/CountriesContext';
 import CountryCard from './CountryCard';
+import Spinner from './Spinner';
 
 const CountryList = () => {
-  const { countries, filteredCountries } = useContext(CountriesContext);
+  const { countries, filteredCountries, loading } =
+    useContext(CountriesContext);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   const result = filteredCountries.length > 0 ? filteredCountries : countries;
 
